@@ -18,8 +18,11 @@ const TaskList: React.FC<TaskListInterface> = ({
   onDeleteTask,
 }) => {
   return (
-    <ul className={`todo-list ${localStorage.getItem("Theme")}-mode`}>
-      {list.map((item: TaskInterface) => {
+    <ul
+      className={`todo-list ${localStorage.getItem("Theme")}-mode`}
+      id="todo-list"
+    >
+      {list.reverse().map((item: TaskInterface) => {
         return (
           <TaskItem
             key={item.id}
