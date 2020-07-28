@@ -1,13 +1,21 @@
 import React from "react";
 
+import Todo from "../pages/Todo";
+
 import "../styles/index.scss";
 
 class App extends React.PureComponent {
   render() {
     return (
-      <div>
-        <h1>Hello World!</h1>
-      </div>
+      <>
+        <input
+          type="text"
+          className="task-search"
+          placeholder="Enter task name for search..."
+        />
+        <div className="task-list"></div>
+        <Todo />
+      </>
     );
   }
 }
