@@ -18,7 +18,7 @@ const TaskList: React.FC<TaskListInterface> = ({
   onDeleteTask,
 }) => {
   return (
-    <div className={`todo-list ${localStorage.getItem("Theme")}-mode`}>
+    <ul className={`todo-list ${localStorage.getItem("Theme")}-mode`}>
       {list.map((item: TaskInterface) => {
         return (
           <TaskItem
@@ -31,7 +31,7 @@ const TaskList: React.FC<TaskListInterface> = ({
           />
         );
       })}
-    </div>
+    </ul>
   );
 };
 

@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import "../styles/ThemeChanger.scss";
 
-const ThemeChanger = () => {
+const ThemeChanger: React.FC = () => {
   const [themeState, setThemeState] = useState(
     localStorage.getItem("Theme") === "dark"
   );
