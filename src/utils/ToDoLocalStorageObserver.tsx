@@ -22,7 +22,7 @@ class ToDoLocalStorageObserver {
   }
 
   get list() {
-    return this.toDoLocalStorageController.list;
+    return this.toDoLocalStorageController.searchList;
   }
 
   addTask(task: TaskInterface) {

@@ -4,7 +4,7 @@ import TaskItem from "./TaskItem";
 
 import TaskInterface from "../interfaces/Task";
 
-import "../styles/TaskItem.scss";
+import "../styles/TaskList.scss";
 
 interface TaskListInterface {
   list: Array<TaskInterface>;
@@ -18,7 +18,7 @@ const TaskList: React.FC<TaskListInterface> = ({
   onDeleteTask,
 }) => {
   return (
-    <>
+    <div className={`todo-list ${localStorage.getItem("Theme")}-mode`}>
       {list.map((item: TaskInterface) => {
         return (
           <TaskItem
@@ -31,7 +31,7 @@ const TaskList: React.FC<TaskListInterface> = ({
           />
         );
       })}
-    </>
+    </div>
   );
 };
 

@@ -1,0 +1,12 @@
+@import "./variables";
+
+.todo-list {
+  width: 100%;
+  min-height: 350px;
+  height: 600px;
+  border: $border;
+  border-radius: $border-radius;
+  background: $bg-light;
+
+  overflow: auto;
+}

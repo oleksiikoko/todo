@@ -1,0 +1,49 @@
+@import "./variables";
+
+.theme-changer {
+  width: 100%;
+
+  button {
+    border: $border;
+    font-weight: 600;
+    height: 50px;
+    width: 50%;
+    outline: none;
+
+    cursor: pointer;
+
+    &:first-child {
+      border-right: 2px solid;
+      border-radius: $border-radius 0 0 $border-radius;
+    }
+
+    &:last-child {
+      border-left: 2px solid;
+      border-radius: 0 $border-radius $border-radius 0;
+    }
+
+    &.light-mode:hover {
+      border-color: $color-light !important;
+      background: $color-light !important;
+      color: $bg-light !important;
+    }
+
+    &.dark-mode:hover {
+      border-color: $color-dark !important;
+      background: $color-dark !important;
+      color: $bg-dark !important;
+    }
+  }
+
+  .light-mode-active {
+    border-color: $color-light !important;
+    background: $color-light !important;
+    color: $bg-light !important;
+  }
+
+  .dark-mode-active {
+    border-color: $color-dark !important;
+    background: $color-dark !important;
+    color: $bg-dark !important;
+  }
+}

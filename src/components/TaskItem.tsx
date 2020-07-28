@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 import TaskInterface from "../interfaces/Task";
 
@@ -17,14 +18,24 @@ const TaskItem: React.FC<TaskItemInterface> = ({
   onDelete,
 }) => {
   return (
-    <ul className="task-item" onClick={() => onClick(id)}>
+    <li
+      className={classNames(
+        "task-item",
+        `${localStorage.getItem("Theme")}-mode`,
+        { done: done }
+      )}
+      onClick={() => onClick(id)}
+    >
       <p>{name}</p>
       {done && (
-        <button className="task-item__delete-btn" onClick={() => onDelete(id)}>
+        <button
+          className={`${localStorage.getItem("Theme")}-mode`}
+          onClick={() => onDelete(id)}
+        >
           Delete
         </button>
       )}
-    </ul>
+    </li>
   );
 };
 

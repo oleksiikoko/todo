@@ -1,9 +1,62 @@
+@import "./variables";
+
 .task-item {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 7px 0 !important;
+
+  cursor: pointer;
+
+  &.light-mode.done,
+  &.light-mode:hover {
+    background: $color-light !important;
+    color: $bg-light !important;
+  }
+
+  &.dark-mode.done,
+  &.dark-mode:hover {
+    background: $color-dark !important;
+    color: $bg-dark !important;
+  }
+
   p {
-    display: inline;
+    max-width: calc(100% - 97px);
+    margin-left: 9px;
+
+    font-weight: 600;
+    word-wrap: break-word;
   }
 
   button {
-    display: inline;
+    height: 24px;
+    margin-left: 13px;
+    padding: 0 9px;
+
+    border: none;
+    border-radius: $border-radius;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    outline: none;
+
+    cursor: pointer;
+
+    &.light-mode:hover {
+      background: $color-light !important;
+      border: 2px solid $bg-light !important;
+      color: $bg-light !important;
+    }
+
+    &.dark-mode:hover {
+      background: $color-dark !important;
+      border: 2px solid $bg-dark !important;
+      color: $bg-dark !important;
+    }
+  }
+
+  &:not(:last-child) {
+    border-bottom: 2px solid;
   }
 }

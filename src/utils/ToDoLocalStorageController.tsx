@@ -3,7 +3,9 @@ import TaskInterface from "interfaces/Task";
 const todoList: string = "todoList";
 
 class ToDoLocalStorageController {
+  searchStr: string;
   constructor() {
+    this.searchStr = "";
     !localStorage.getItem(todoList) &&
       localStorage.setItem(todoList, JSON.stringify([]));
   }
@@ -16,22 +18,32 @@ class ToDoLocalStorageController {
     localStorage.setItem(todoList, JSON.stringify(todo));
   }
 
+  get searchList(): Array<TaskInterface> {
+    return JSON.parse(
+      localStorage.getItem(todoList) || "[]"
+    ).filter((item: TaskInterface) => item.name.includes(this.searchStr));
+  }
+
   addTask(task: TaskInterface): Array<TaskInterface> {
-    return (this.list = this.list.concat(task));
+    this.list = this.list.concat(task);
+    return this.searchList;
   }
 
   changeDone(id: string): Array<TaskInterface> {
-    return (this.list = this.list.map((item) =>
+    this.list = this.list.map((item) =>
       item.id === id ? { ...item, done: !item.done } : item
-    ));
+    );
+    return this.searchList;
   }
 
   deleteTask(id: string): Array<TaskInterface> {
-    return (this.list = this.list.filter((item) => item.id !== id));
+    this.list = this.list.filter((item) => item.id !== id);
+    return this.searchList;
   }
 
   searchTasks(subStr: string): Array<TaskInterface> {
-    return this.list.filter((item) => item.name.includes(subStr));
+    this.searchStr = subStr;
+    return this.searchList;
   }
 }
 

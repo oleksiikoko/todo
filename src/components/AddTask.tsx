@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
-// import TaskInterface from "../interfaces/Task";
-
-import "../styles/TaskItem.scss";
+import "../styles/AddTask.scss";
 
 interface TaskItemInterface {
   onAddTask: Function;
@@ -10,15 +8,27 @@ interface TaskItemInterface {
 
 const AddTask: React.FC<TaskItemInterface> = ({ onAddTask }) => {
   const [inputValue, setInputValue] = useState("");
+
+  const addTask = () => {
+    onAddTask(inputValue);
+    setInputValue("");
+  };
+
   return (
-    <div>
+    <div className={`add-task ${localStorage.getItem("Theme")}-mode`}>
       <input
         type="text"
-        className="task-create"
+        className={`task-create ${localStorage.getItem("Theme")}-mode`}
         placeholder='Enter task and press "Add task" button'
         onChange={(e) => setInputValue(e.target.value)}
+        value={inputValue}
       />
-      <button onClick={() => onAddTask(inputValue)}>addTask</button>
+      <button
+        className={`${localStorage.getItem("Theme")}-mode`}
+        onClick={addTask}
+      >
+        Add Task!
+      </button>
     </div>
   );
 };

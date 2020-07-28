@@ -1,0 +1,47 @@
+@import "./variables";
+
+.add-task {
+  display: flex;
+
+  margin: 20px 0;
+
+  input {
+    width: calc(100% - 100px);
+    height: 43px;
+    border: $border;
+    border-right: 2px solid;
+    border-radius: $border-radius 0 0 $border-radius;
+    background: $bg-light;
+
+    padding-left: 9px;
+
+    color: $color-light;
+    font-weight: 600;
+
+    outline: none;
+  }
+
+  button {
+    height: 43px;
+    font-weight: 600;
+    width: 110px;
+    outline: none;
+    border: $border;
+    border-left: 2px solid;
+    border-radius: 0 $border-radius $border-radius 0;
+
+    cursor: pointer;
+
+    &.light-mode:hover {
+      border-color: $color-light !important;
+      background: $color-light !important;
+      color: $bg-light !important;
+    }
+
+    &.dark-mode:hover {
+      border-color: $color-dark !important;
+      background: $color-dark !important;
+      color: $bg-dark !important;
+    }
+  }
+}
