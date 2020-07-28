@@ -34,3 +34,10 @@
   background: $bg-dark !important;
   color: $color-dark !important;
 }
+
+@media screen and (max-width: 600px) {
+  .todo__container {
+    width: 80%;
+    max-height: 100%;
+  }
+}
