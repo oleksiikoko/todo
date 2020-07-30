@@ -20,6 +20,7 @@
 
   height: 180px;
   width: 450px;
+  max-width: 90%;
 
   border: $border;
   border-radius: $border-radius;
@@ -63,3 +64,10 @@
     }
   }
 }
+
+// @media screen and (max-width: 600px) {
+//   .todo__container {
+//     width: 80%;
+//     max-height: 100%;
+//   }
+// }
