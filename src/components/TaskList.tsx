@@ -21,17 +21,19 @@ const TaskList: React.FC<TaskListInterface> = ({
 }) => {
   return (
     <ul className={`todo-list ${themeMode}`} id="todo-list">
-      {list.reverse().map((item: TaskInterface) => {
-        return (
-          <TaskItem
-            key={item.id}
-            {...item}
-            onClick={onClickTask}
-            onDelete={onDeleteTask}
-            themeMode={themeMode}
-          />
-        );
-      })}
+      {list
+        .map((item: TaskInterface) => {
+          return (
+            <TaskItem
+              key={item.id}
+              {...item}
+              onClick={onClickTask}
+              onDelete={onDeleteTask}
+              themeMode={themeMode}
+            />
+          );
+        })
+        .reverse()}
     </ul>
   );
 };
