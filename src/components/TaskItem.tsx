@@ -1,56 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
-
-import DeletePopup from "./DeletePopup";
-
-import TaskInterface from "../interfaces/Task";
 
 import "../styles/TaskItem.scss";
 
-interface TaskItemInterface extends TaskInterface {
-  onClick: Function;
-  onDelete: Function;
+interface TaskItemInterface {
+  name: string;
+  done: boolean;
+  onClick: () => void;
+  showDeletePopup: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  themeMode: string;
 }
 
 const TaskItem: React.FC<TaskItemInterface> = ({
-  id,
   name,
   done,
   onClick,
-  onDelete,
+  showDeletePopup,
+  themeMode,
 }) => {
-  const [showDeletePopup, setShowDeletePupup] = useState(false);
   return (
-    <>
-      <li
-        className={classNames(
-          "task-item",
-          `${localStorage.getItem("Theme")}-mode`,
-          { done: done }
-        )}
-        onClick={() => onClick(id)}
-      >
-        <p>{name}</p>
-        {done && (
-          <button
-            className={`${localStorage.getItem("Theme")}-mode`}
-            onClick={(event) => {
-              event.stopPropagation();
-              setShowDeletePupup(true);
-            }}
-          >
-            Delete
-          </button>
-        )}
-      </li>
-      {showDeletePopup && (
-        <DeletePopup
-          name={name}
-          onConfirm={() => onDelete(id)}
-          onCancel={() => setShowDeletePupup(false)}
-        />
+    <li
+      className={classNames("task-item", `${themeMode}`, { done: done })}
+      onClick={onClick}
+    >
+      <p>{name}</p>
+      {done && (
+        <button className={themeMode} onClick={showDeletePopup}>
+          Delete
+        </button>
       )}
-    </>
+    </li>
   );
 };
 

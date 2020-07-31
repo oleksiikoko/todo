@@ -1,6 +1,6 @@
 import React from "react";
 
-import TaskItem from "./TaskItem";
+import TaskItem from "../containers/TaskItem";
 
 import TaskInterface from "../interfaces/Task";
 
@@ -8,29 +8,27 @@ import "../styles/TaskList.scss";
 
 interface TaskListInterface {
   list: Array<TaskInterface>;
-  onClickTask: Function;
-  onDeleteTask: Function;
+  onClickTask: (id: string) => void;
+  onDeleteTask: (id: string) => void;
+  themeMode: string;
 }
 
 const TaskList: React.FC<TaskListInterface> = ({
   list,
   onClickTask,
   onDeleteTask,
+  themeMode,
 }) => {
   return (
-    <ul
-      className={`todo-list ${localStorage.getItem("Theme")}-mode`}
-      id="todo-list"
-    >
+    <ul className={`todo-list ${themeMode}`} id="todo-list">
       {list.reverse().map((item: TaskInterface) => {
         return (
           <TaskItem
             key={item.id}
-            id={item.id}
-            name={item.name}
-            done={item.done}
+            {...item}
             onClick={onClickTask}
             onDelete={onDeleteTask}
+            themeMode={themeMode}
           />
         );
       })}

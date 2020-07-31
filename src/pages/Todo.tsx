@@ -3,21 +3,34 @@ import React, { useState } from "react";
 import ThemeMode from "../components/ThemeChanger";
 import SearchTask from "../components/SearchTask";
 import TaskList from "../components/TaskList";
-import AddTask from "../components/AddTask";
+import AddTask from "../containers/AddTask";
 
 import ToDoLocalStorageObserver from "../utils/ToDoLocalStorageObserver";
+import ThemeModeLocalStorageObserver from "../utils/ThemeModeLocalStorageObserver";
 import createUuid from "../utils/createUuid";
+
+import TaskInterface from "interfaces/Task";
 
 import "../styles/Todo.scss";
 
 interface ToDoIterface {
   toDoLocalStorageObserver: ToDoLocalStorageObserver;
+  themeModeLocalStorageObserver: ThemeModeLocalStorageObserver;
 }
 
-const Todo: React.FC<ToDoIterface> = ({ toDoLocalStorageObserver }) => {
-  const [todo, setTodo] = useState(toDoLocalStorageObserver.list);
+const Todo: React.FC<ToDoIterface> = ({
+  toDoLocalStorageObserver,
+  themeModeLocalStorageObserver,
+}) => {
+  const [todo, setTodo] = useState<Array<TaskInterface>>(
+    toDoLocalStorageObserver.list
+  );
+  const [themeMode, setThemeMode] = useState<string>(
+    themeModeLocalStorageObserver.mode
+  );
 
   toDoLocalStorageObserver.subscribe(setTodo);
+  themeModeLocalStorageObserver.subscribe(setThemeMode);
 
   const addTask = (name: string) => {
     toDoLocalStorageObserver.addTask({
@@ -40,7 +53,7 @@ const Todo: React.FC<ToDoIterface> = ({ toDoLocalStorageObserver }) => {
   };
 
   return (
-    <div className={`todo ${localStorage.getItem("Theme")}-mode`}>
+    <div className={`todo ${themeMode}`}>
       <div className="todo__container">
         <ThemeMode />
         <SearchTask onSearchTasks={searchTasks} />
@@ -48,8 +61,9 @@ const Todo: React.FC<ToDoIterface> = ({ toDoLocalStorageObserver }) => {
           list={todo}
           onClickTask={changeDoneTask}
           onDeleteTask={deleteTask}
+          themeMode={themeMode}
         />
-        <AddTask onAddTask={addTask} />
+        <AddTask onAddTask={addTask} themeMode={themeMode} />
       </div>
     </div>
   );

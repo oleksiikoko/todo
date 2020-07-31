@@ -6,26 +6,17 @@ const DeletePopup: React.FC<{
   name: string;
   onConfirm: Function;
   onCancel: Function;
-}> = ({ name, onConfirm, onCancel }) => {
+  themeMode: string;
+}> = ({ name, onConfirm, onCancel, themeMode }) => {
   return (
-    <div className="popup__container" onClick={() => onCancel()}>
-      <div className={`popup ${localStorage.getItem("Theme")}-mode`}>
-        <p className={`popup__title ${localStorage.getItem("Theme")}-mode`}>
-          Delete task:
-        </p>
-        <p className={`popup__text ${localStorage.getItem("Theme")}-mode`}>
-          {name}
-        </p>
-        <button
-          className={`${localStorage.getItem("Theme")}-mode`}
-          onClick={() => onConfirm()}
-        >
+    <div id="popup" className="popup__container" onClick={() => onCancel()}>
+      <div className={`popup ${themeMode}`}>
+        <p className={`popup__title ${themeMode}`}>Delete task:</p>
+        <p className={`popup__text ${themeMode}`}>{name}</p>
+        <button className={`${themeMode}`} onClick={() => onConfirm()}>
           Confirm
         </button>
-        <button
-          className={`${localStorage.getItem("Theme")}-mode`}
-          onClick={() => onCancel()}
-        >
+        <button className={`${themeMode}`} onClick={() => onCancel()}>
           Cancel
         </button>
       </div>
