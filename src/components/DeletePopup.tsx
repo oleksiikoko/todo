@@ -4,19 +4,24 @@ import "../styles/Popup.scss";
 
 const DeletePopup: React.FC<{
   name: string;
-  onConfirm: Function;
-  onCancel: Function;
+  onConfirm: () => void;
+  onCancel: () => void;
   themeMode: string;
 }> = ({ name, onConfirm, onCancel, themeMode }) => {
+  const onCanceleClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    onCancel();
+  };
+
   return (
-    <div id="popup" className="popup__container" onClick={() => onCancel()}>
+    <div className="popup__container" onClick={onCanceleClick}>
       <div className={`popup ${themeMode}`}>
-        <p className={`popup__title ${themeMode}`}>Delete task:</p>
-        <p className={`popup__text ${themeMode}`}>{name}</p>
-        <button className={`${themeMode}`} onClick={() => onConfirm()}>
+        <p className={`popup__title`}>Delete task:</p>
+        <p className={`popup__text `}>{name}</p>
+        <button className={themeMode} onClick={onConfirm}>
           Confirm
         </button>
-        <button className={`${themeMode}`} onClick={() => onCancel()}>
+        <button className={themeMode} onClick={onCanceleClick}>
           Cancel
         </button>
       </div>

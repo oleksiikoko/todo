@@ -1,5 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { useState } from "react";
 
 import TaskItemComponent from "../components/TaskItem";
 import Popup from "../components/DeletePopup";
@@ -22,37 +21,34 @@ const TaskItem: React.FC<TaskItemInterface> = ({
   onDelete,
   themeMode,
 }) => {
+  const [showPopup, setShowPopup] = useState<boolean>(false);
+
   const onClickItem = () => {
     onClick(id);
   };
-
-  //=====popup
-  const deletePupup = () => {
-    document.getElementById("popup")!.remove();
-  };
-
-  const showPopup = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onClickDeleteButton = (event: React.MouseEvent) => {
     event.stopPropagation();
-    ReactDOM.render(
-      <Popup
-        name={name}
-        onConfirm={() => onDelete(id)}
-        onCancel={() => deletePupup()}
-        themeMode={themeMode}
-      />,
-      document.getElementById("root")
-    );
+    setShowPopup(true);
   };
-  //=====
 
   return (
-    <TaskItemComponent
-      name={name}
-      done={done}
-      onClick={onClickItem}
-      showDeletePopup={showPopup}
-      themeMode={themeMode}
-    />
+    <>
+      <TaskItemComponent
+        name={name}
+        done={done}
+        onClick={onClickItem}
+        showDeletePopup={onClickDeleteButton}
+        themeMode={themeMode}
+      />
+      {showPopup && (
+        <Popup
+          name={name}
+          onConfirm={() => onDelete(id)}
+          onCancel={() => setShowPopup(false)}
+          themeMode={themeMode}
+        />
+      )}
+    </>
   );
 };
 
