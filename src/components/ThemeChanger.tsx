@@ -1,64 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import classNames from "classnames";
+
+import ThemeModeLocalStorageObserver from "../utils/ThemeModeLocalStorageObserver";
 
 import "../styles/ThemeChanger.scss";
 
-const ThemeChanger: React.FC = () => {
-  const [themeState, setThemeState] = useState(
-    localStorage.getItem("Theme") === "dark"
-  );
+interface ThemeChangerIterface {
+  themeModeLocalStorageObserver: ThemeModeLocalStorageObserver;
+}
 
-  const changeTheme = () => {
-    let toDoLight = document.querySelectorAll(".light-mode");
-    let toDoDark = document.querySelectorAll(".dark-mode");
-
-    for (var i = 0; i < toDoLight.length; ++i) {
-      toDoLight[i].classList.add("dark-mode");
-      toDoLight[i].classList.remove("light-mode");
-    }
-
-    for (var i = 0; i < toDoDark.length; ++i) {
-      toDoDark[i].classList.add("light-mode");
-      toDoDark[i].classList.remove("dark-mode");
-    }
-  };
-
-  const handleChange = (state: boolean) => {
-    if (themeState !== state) {
-      setThemeState(!themeState);
-      changeTheme();
-
-      if (state) {
-        localStorage.setItem("Theme", "dark");
-      } else {
-        localStorage.setItem("Theme", "light");
-      }
-    }
-  };
-
-  useEffect(() => {
-    !localStorage.getItem("Theme") && localStorage.setItem("Theme", "light");
-  });
+const ThemeChanger: React.FC<ThemeChangerIterface> = ({
+  themeModeLocalStorageObserver,
+}) => {
+  const themeMode = themeModeLocalStorageObserver.mode;
+  const setLightMode: () => void = themeModeLocalStorageObserver.setLightMode;
+  const setDarkMode: () => void = themeModeLocalStorageObserver.setDarkMode;
 
   return (
-    <div className={`theme-changer ${localStorage.getItem("Theme")}-mode`}>
+    <div className={`theme-changer ${themeMode}`}>
       <button
-        className={classNames(
-          { "dark-mode": themeState },
-          { "light-mode": !themeState },
-          { "light-mode-active": !themeState }
-        )}
-        onClick={() => handleChange(false)}
+        className={classNames(themeMode, {
+          "light-mode-active": themeMode !== "dark-mode",
+        })}
+        onClick={setLightMode}
       >
         Light
       </button>
       <button
-        className={classNames(
-          { "dark-mode": themeState },
-          { "light-mode": !themeState },
-          { "dark-mode-active": themeState }
-        )}
-        onClick={() => handleChange(true)}
+        className={classNames(themeMode, {
+          "dark-mode-active": themeMode === "dark-mode",
+        })}
+        onClick={setDarkMode}
       >
         Dark
       </button>

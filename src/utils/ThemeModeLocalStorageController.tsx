@@ -11,7 +11,7 @@ class ThemeModeLocalStorageController {
   }
 
   set mode(themeMode: string) {
-    localStorage.setItem(themeModeList, JSON.stringify(themeMode));
+    localStorage.setItem(themeModeList, themeMode);
   }
 
   setLightMode(): string {

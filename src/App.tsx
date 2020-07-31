@@ -1,11 +1,11 @@
 import React from "react";
 
-import Todo from "../pages/Todo";
+import Todo from "./pages/Todo";
 
-import ToDoLocalStorageObserver from "../utils/ToDoLocalStorageObserver";
-import ThemeModeLocalStorageObserver from "../utils/ThemeModeLocalStorageObserver";
+import ToDoLocalStorageObserver from "./utils/ToDoLocalStorageObserver";
+import ThemeModeLocalStorageObserver from "./utils/ThemeModeLocalStorageObserver";
 
-import "../styles/index.scss";
+import "./styles/index.scss";
 
 class App extends React.PureComponent {
   toDoLocalStorageObserver: ToDoLocalStorageObserver;

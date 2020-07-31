@@ -55,7 +55,9 @@ const Todo: React.FC<ToDoIterface> = ({
   return (
     <div className={`todo ${themeMode}`}>
       <div className="todo__container">
-        <ThemeMode />
+        <ThemeMode
+          themeModeLocalStorageObserver={themeModeLocalStorageObserver}
+        />
         <SearchTask onSearchTasks={searchTasks} />
         <TaskList
           list={todo}
