@@ -13,8 +13,8 @@ const ThemeChanger: React.FC<ThemeChangerIterface> = ({
   themeModeLocalStorageObserver,
 }) => {
   const themeMode = themeModeLocalStorageObserver.mode;
-  const setLightMode: () => void = themeModeLocalStorageObserver.setLightMode;
-  const setDarkMode: () => void = themeModeLocalStorageObserver.setDarkMode;
+  const setLightMode = () => themeModeLocalStorageObserver.setLightMode();
+  const setDarkMode = () => themeModeLocalStorageObserver.setDarkMode();
 
   return (
     <div className={`theme-changer ${themeMode}`}>
