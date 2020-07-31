@@ -2,17 +2,25 @@ import React from "react";
 
 import "../styles/SearchTask.scss";
 
-const SearchTask: React.FC<{ onSearchTasks: Function }> = ({
+interface SearchTaskIterface {
+  onSearchTasks: Function;
+  themeMode: string;
+}
+
+const SearchTask: React.FC<SearchTaskIterface> = ({
   onSearchTasks,
+  themeMode,
 }) => {
+  const placeholderValue = "Enter task name for search...";
+  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    onSearchTasks(event.target.value);
+
   return (
     <input
       type="text"
-      className={`task-search ${localStorage.getItem("Theme")}-mode`}
-      placeholder="Enter task name for search..."
-      onChange={(e) => {
-        onSearchTasks(e.target.value);
-      }}
+      className={`task-search ${themeMode}`}
+      placeholder={placeholderValue}
+      onChange={onInputChange}
     />
   );
 };
