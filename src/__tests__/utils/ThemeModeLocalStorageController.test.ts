@@ -6,14 +6,14 @@ describe("ThemeModeLocalStorageController", () => {
   describe("Constructor", () => {
     it("empty localStorage", () => {
       localStorage.removeItem(themeMode);
-      let themeModeLocalStorageController = new ThemeModeLocalStorageController();
+      new ThemeModeLocalStorageController();
 
       expect(localStorage.getItem(themeMode)).toBe("light-mode");
     });
 
     it("uncorrect localStorage", () => {
       localStorage.setItem(themeMode, "uncorrect");
-      let themeModeLocalStorageController = new ThemeModeLocalStorageController();
+      new ThemeModeLocalStorageController();
 
       expect(localStorage.getItem(themeMode)).toBe("light-mode");
     });

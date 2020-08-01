@@ -1,6 +1,6 @@
 import TaskInterface from "interfaces/Task";
 
-const todoList: string = "todoList";
+export const todoList: string = "todoList";
 
 class ToDoLocalStorageController {
   searchStr: string;

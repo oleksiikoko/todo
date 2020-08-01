@@ -2,9 +2,13 @@ export const themeMode: string = "Theme";
 
 class ThemeModeLocalStorageController {
   constructor() {
-    !localStorage.getItem(themeMode) ||
-      !["light-mode", "dark-mode"].includes(localStorage.getItem(themeMode)!);
-    localStorage.setItem(themeMode, "light-mode");
+    if (
+      !localStorage.getItem(themeMode) ||
+      ["light-mode", "dark-mode"].includes(localStorage.getItem(themeMode)!) !==
+        true
+    ) {
+      localStorage.setItem(themeMode, "light-mode");
+    }
   }
 
   get mode(): string {
