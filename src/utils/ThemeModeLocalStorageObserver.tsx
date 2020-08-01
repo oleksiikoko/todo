@@ -1,4 +1,4 @@
-import ThemeModeLocalStorageController from "./ToDoLocalStorageController";
+import ThemeModeLocalStorageController from "./ThemeModeLocalStorageController";
 
 class ThemeModeLocalStorageObserver {
   private observers: Array<Function>;
