@@ -30,7 +30,11 @@ const AddTask: React.FC<TaskItemInterface> = ({
       onChange={onInputChange}
       value={inputValue}
     />
-    <button className={themeMode} onClick={addTask}>
+    <button
+      data-testid="add-task__button"
+      className={themeMode}
+      onClick={addTask}
+    >
       {buttonName}
     </button>
   </div>
