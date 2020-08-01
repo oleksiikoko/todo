@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import AddTaskComponent from "../components/AddTask";
+import { AddTaskComponent } from "components";
 
-import "../styles/AddTask.scss";
+import "styles/AddTask.scss";
 
 const inputPlaceholder = 'Enter task and press "Add task" button';
 const buttonName = "Add Task!";

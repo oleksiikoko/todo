@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../styles/AddTask.scss";
+import "styles/AddTask.scss";
 
 interface TaskItemInterface {
   themeMode: string;

@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 
-import ThemeMode from "../components/ThemeChanger";
-import SearchTask from "../components/SearchTask";
-import TaskList from "../components/TaskList";
-import AddTask from "../containers/AddTask";
-
-import ToDoLocalStorageObserver from "../utils/ToDoLocalStorageObserver";
-import ThemeModeLocalStorageObserver from "../utils/ThemeModeLocalStorageObserver";
-import createUuid from "../utils/createUuid";
-
+import { ThemeChanger, SearchTask, TaskList } from "components";
+import { AddTaskContainer } from "containers";
+import {
+  ToDoLocalStorageObserver,
+  ThemeModeLocalStorageObserver,
+  createUuid,
+} from "utils";
 import TaskInterface from "interfaces/Task";
 
 import "../styles/Todo.scss";
@@ -55,7 +53,7 @@ const Todo: React.FC<ToDoIterface> = ({
   return (
     <div className={`todo ${themeMode}`}>
       <div className="todo__container">
-        <ThemeMode
+        <ThemeChanger
           themeModeLocalStorageObserver={themeModeLocalStorageObserver}
         />
         <SearchTask onSearchTasks={searchTasks} themeMode={themeMode} />
@@ -65,7 +63,7 @@ const Todo: React.FC<ToDoIterface> = ({
           onDeleteTask={deleteTask}
           themeMode={themeMode}
         />
-        <AddTask onAddTask={addTask} themeMode={themeMode} />
+        <AddTaskContainer onAddTask={addTask} themeMode={themeMode} />
       </div>
     </div>
   );

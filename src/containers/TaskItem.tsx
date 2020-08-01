@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 
-import TaskItemComponent from "../components/TaskItem";
-import Popup from "../components/DeletePopup";
+import { TaskItemComponent, DeletePopup } from "components";
+import TaskInterface from "interfaces/Task";
 
-import TaskInterface from "../interfaces/Task";
-
-import "../styles/TaskItem.scss";
+import "styles/TaskItem.scss";
 
 interface TaskItemInterface extends TaskInterface {
   onClick: (id: string) => void;
@@ -41,7 +39,7 @@ const TaskItem: React.FC<TaskItemInterface> = ({
         themeMode={themeMode}
       />
       {showPopup && (
-        <Popup
+        <DeletePopup
           name={name}
           onConfirm={() => onDelete(id)}
           onCancel={() => setShowPopup(false)}

@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import "../styles/TaskItem.scss";
+import "styles/TaskItem.scss";
 
 interface TaskItemInterface {
   name: string;

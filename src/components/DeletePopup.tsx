@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../styles/Popup.scss";
+import "styles/Popup.scss";
 
 const DeletePopup: React.FC<{
   name: string;

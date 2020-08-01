@@ -1,10 +1,9 @@
 import React from "react";
 
-import TaskItem from "../containers/TaskItem";
+import { TaskItemContainer } from "containers";
+import TaskInterface from "interfaces/Task";
 
-import TaskInterface from "../interfaces/Task";
-
-import "../styles/TaskList.scss";
+import "styles/TaskList.scss";
 
 interface TaskListInterface {
   list: Array<TaskInterface>;
@@ -24,7 +23,7 @@ const TaskList: React.FC<TaskListInterface> = ({
       {list
         .map((item: TaskInterface) => {
           return (
-            <TaskItem
+            <TaskItemContainer
               key={item.id}
               {...item}
               onClick={onClickTask}

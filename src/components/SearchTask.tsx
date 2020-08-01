@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../styles/SearchTask.scss";
+import "styles/SearchTask.scss";
 
 interface SearchTaskIterface {
   onSearchTasks: Function;

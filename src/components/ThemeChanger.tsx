@@ -1,9 +1,9 @@
 import React from "react";
 import classNames from "classnames";
 
-import ThemeModeLocalStorageObserver from "../utils/ThemeModeLocalStorageObserver";
+import { ThemeModeLocalStorageObserver } from "utils";
 
-import "../styles/ThemeChanger.scss";
+import "styles/ThemeChanger.scss";
 
 interface ThemeChangerIterface {
   themeModeLocalStorageObserver: ThemeModeLocalStorageObserver;
