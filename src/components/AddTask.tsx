@@ -21,7 +21,7 @@ const AddTask: React.FC<TaskItemInterface> = ({
   onInputChange,
   onPressEnter,
 }) => (
-  <div className={`add-task ${themeMode}`}>
+  <div data-testid="add-task" className={`add-task ${themeMode}`}>
     <input
       type="text"
       className={`task-create ${themeMode}`}

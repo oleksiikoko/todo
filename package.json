@@ -3,7 +3,12 @@
   "name": "todo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    }
+  },
   "scripts": {
     "bundle": "webpack",
     "test": "jest --watch",
@@ -26,16 +31,19 @@
     "@testing-library/jest-dom": "^5.11.2",
     "@testing-library/react": "^10.4.7",
     "@types/classnames": "^2.2.10",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-jest": "^26.2.1",
     "babel-loader": "^8.1.0",
     "classnames": "^2.2.6",
     "css-loader": "^4.0.0",
     "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^4.3.0",
-    "jest": "^26.2.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.2.2",
     "node-sass": "^4.14.1",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.2",
+    "source-map-loader": "^1.0.1",
     "style-loader": "^1.2.1",
     "tslint": "^6.1.2",
     "tslint-immutable": "^6.0.1",
@@ -45,9 +53,11 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@types/jest": "^26.0.8",
     "@types/react": "^16.9.43",
     "@types/react-dom": "^16.9.8",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "ts-jest": "^26.1.4"
   }
 }

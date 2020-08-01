@@ -18,7 +18,7 @@
     "esModuleInterop": true,
     // use typescript to transpile jsx to js
     "jsx": "react",
-    "baseUrl": "./src",
+    "baseUrl": "src",
     "lib": [
       "es2015",
       "dom.iterable",
@@ -38,5 +38,6 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true
-  }
+  },
+  "include": ["src"]
 }
