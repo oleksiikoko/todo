@@ -1,17 +1,18 @@
-const themeModeList: string = "Theme";
+export const themeMode: string = "Theme";
 
 class ThemeModeLocalStorageController {
   constructor() {
-    !localStorage.getItem(themeModeList) &&
-      localStorage.setItem(themeModeList, "light-mode");
+    !localStorage.getItem(themeMode) ||
+      !["light-mode", "dark-mode"].includes(localStorage.getItem(themeMode)!);
+    localStorage.setItem(themeMode, "light-mode");
   }
 
   get mode(): string {
-    return localStorage.getItem(themeModeList) || "";
+    return localStorage.getItem(themeMode) || "";
   }
 
-  set mode(themeMode: string) {
-    localStorage.setItem(themeModeList, themeMode);
+  set mode(value: string) {
+    localStorage.setItem(themeMode, value);
   }
 
   setLightMode(): string {
