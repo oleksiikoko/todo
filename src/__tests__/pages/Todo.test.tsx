@@ -2,8 +2,8 @@ import React from "react";
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 
-import Todo from "../../pages/Todo";
-import ToDoLocalStorageObserver from "../../utils/ToDoLocalStorageObserver";
+import { Todo } from "pages";
+import { ToDoLocalStorageObserver } from "utils";
 import ThemeModeLocalStorageObserver from "../../utils/ThemeModeLocalStorageObserver";
 
 afterEach(cleanup);
@@ -87,7 +87,6 @@ describe("Todo page", () => {
           }
         );
       });
-
       //=========================================================================
     });
     it("done task", () => {
