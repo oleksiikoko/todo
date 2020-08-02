@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import TaskList from "../../components/TaskList";
+
+import { TaskList } from "components";
 
 describe("TaskList", () => {
   const mockFn = jest.fn();

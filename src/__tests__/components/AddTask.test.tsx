@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import AddTaskComponent from "../../components/AddTask";
+
+import { AddTaskComponent } from "components";
 
 describe("AddTaskComponent", () => {
   const mockFn = jest.fn();

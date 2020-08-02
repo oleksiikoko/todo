@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import DeletePopup from "../../components/DeletePopup";
+import { DeletePopup } from "components";
 
 describe("DeletePopup", () => {
   const mockFn = jest.fn();

@@ -3,8 +3,7 @@ import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 
 import { Todo } from "pages";
-import { ToDoLocalStorageObserver } from "utils";
-import ThemeModeLocalStorageObserver from "../../utils/ThemeModeLocalStorageObserver";
+import { ToDoLocalStorageObserver, ThemeModeLocalStorageObserver } from "utils";
 
 afterEach(cleanup);
 

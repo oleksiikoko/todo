@@ -1,4 +1,4 @@
-import { ToDoLocalStorageObserver } from "../../utils";
+import { ToDoLocalStorageObserver } from "utils";
 
 describe("ToDoLocalStorageObserver", () => {
   const toDoLocalStorageObserver: ToDoLocalStorageObserver = new ToDoLocalStorageObserver();

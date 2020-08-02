@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 
-import ThemeChanger from "../../components/ThemeChanger";
-import ThemeModeLocalStorageObserver from "../../utils/ThemeModeLocalStorageObserver";
+import { ThemeChanger } from "components";
+import { ThemeModeLocalStorageObserver } from "utils";
 
 describe("ThemeChanger", () => {
   const themeMode = new ThemeModeLocalStorageObserver();

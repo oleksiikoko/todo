@@ -1,7 +1,8 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
-import TaskItem from "../../containers/TaskItem";
+
+import { TaskItemContainer } from "containers";
 
 describe("TaskItem", () => {
   const mockFn = jest.fn();
@@ -16,7 +17,7 @@ describe("TaskItem", () => {
       themeMode: "light-mode",
     };
     beforeEach(() => {
-      render(<TaskItem {...props} />);
+      render(<TaskItemContainer {...props} />);
     });
 
     it("component render", () => {

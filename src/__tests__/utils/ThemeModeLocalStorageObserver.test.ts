@@ -1,4 +1,4 @@
-import { ThemeModeLocalStorageObserver } from "../../utils";
+import { ThemeModeLocalStorageObserver } from "utils";
 
 describe("ThemeModeLocalStorageObserver", () => {
   const themeModeLocalStorageObserver: ThemeModeLocalStorageObserver = new ThemeModeLocalStorageObserver();

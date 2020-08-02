@@ -1,4 +1,4 @@
-import { createUuid } from "../../utils";
+import { createUuid } from "utils";
 
 describe("createUuid", () => {
   it("string length", () => {
