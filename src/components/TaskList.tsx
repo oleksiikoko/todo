@@ -19,7 +19,11 @@ const TaskList: React.FC<TaskListInterface> = ({
   themeMode,
 }) => {
   return (
-    <ul className={`todo-list ${themeMode}`} id="todo-list">
+    <ul
+      data-testid="task-list"
+      className={`todo-list ${themeMode}`}
+      id="todo-list"
+    >
       {list
         .map((item: TaskInterface) => {
           return (

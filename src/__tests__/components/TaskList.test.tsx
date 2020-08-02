@@ -1,80 +1,36 @@
-// import React from "react";
-// import { render, screen, fireEvent } from "@testing-library/react";
-// import TaskItem from "../../components/TaskItem";
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import TaskList from "../../components/TaskList";
 
-// describe("TaskItem", () => {
-//   const mockFn = jest.fn();
+describe("TaskList", () => {
+  const mockFn = jest.fn();
 
-//   describe("render without button", () => {
-//     const props = {
-//       name: "testName",
-//       done: false,
-//       onClick: mockFn,
-//       showDeletePopup: mockFn,
-//       themeMode: "light-mode",
-//     };
-//     beforeEach(() => {
-//       render(<TaskItem {...props} />);
-//     });
+  describe("render", () => {
+    const props = {
+      list: [
+        { id: "testId1", name: "testName1", done: false },
+        { id: "testId2", name: "testName2", done: false },
+        { id: "testId3", name: "testName2", done: false },
+      ],
+      onClickTask: mockFn,
+      onDeleteTask: mockFn,
+      themeMode: "light-mode",
+    };
+    beforeEach(() => {
+      render(<TaskList {...props} />);
+    });
 
-//     it("container render", () => {
-//       expect(screen.queryByTestId("task-item")).toBeTruthy();
-//       expect(screen.queryByTestId("task-item")).toHaveClass(
-//         `task-item ${props.themeMode}`
-//       );
-//     });
+    it("container", () => {
+      expect(screen.queryByTestId("task-list")).toBeTruthy();
+      expect(screen.queryByTestId("task-list")).toHaveClass(
+        `todo-list ${props.themeMode}`
+      );
+    });
 
-//     it("name render", () => {
-//       expect(screen.queryByText(props.name)).toBeTruthy();
-//     });
-
-//     it("button not render", () => {
-//       expect(screen.queryByRole("button")).not.toBeTruthy();
-//     });
-//   });
-
-//   describe("render with button", () => {
-//     const props = {
-//       name: "testName",
-//       done: true,
-//       onClick: mockFn,
-//       showDeletePopup: mockFn,
-//       themeMode: "light-mode",
-//     };
-//     beforeEach(() => {
-//       render(<TaskItem {...props} />);
-//     });
-
-//     it("container render", () => {
-//       expect(screen.queryByTestId("task-item")).toBeTruthy();
-//       expect(screen.queryByTestId("task-item")).toHaveClass(
-//         `task-item ${props.themeMode} done`
-//       );
-//     });
-
-//     it("name render", () => {
-//       expect(screen.queryByText(props.name)).toBeTruthy();
-//     });
-
-//     it("button render", () => {
-//       expect(screen.queryByRole("button")).toBeTruthy();
-//       expect(screen.queryByRole("button")).toHaveClass(props.themeMode);
-//     });
-
-//     describe("function calls", () => {
-//       beforeEach(() => {
-//         mockFn.mockClear();
-//       });
-
-//       it("item click", () => {
-//         fireEvent.click(screen.queryByTestId("task-item")!);
-//         expect(mockFn).toHaveBeenCalledTimes(1);
-//       });
-
-//       it("deleteButton click", () => {
-//         fireEvent.click(screen.queryByRole("button")!);
-//         expect(mockFn).toHaveBeenCalledTimes(1);
-//       });
-//     });
-//   });
-// });
+    it("ul length", () => {
+      expect(screen.queryAllByTestId("task-item")).toHaveLength(
+        props.list.length
+      );
+    });
+  });
+});
