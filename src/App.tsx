@@ -8,20 +8,20 @@ import ThemeModeLocalStorageObserver from "./utils/ThemeModeLocalStorageObserver
 import "./styles/index.scss";
 
 class App extends React.PureComponent {
-  toDoLocalStorageObserver: ToDoLocalStorageObserver;
-  themeModeLocalStorageObserver: ThemeModeLocalStorageObserver;
+  toDoObserver: ToDoLocalStorageObserver;
+  themeModeObserver: ThemeModeLocalStorageObserver;
 
   constructor(props: any) {
     super(props);
-    this.toDoLocalStorageObserver = new ToDoLocalStorageObserver();
-    this.themeModeLocalStorageObserver = new ThemeModeLocalStorageObserver();
+    this.toDoObserver = new ToDoLocalStorageObserver();
+    this.themeModeObserver = new ThemeModeLocalStorageObserver();
   }
 
   render() {
     return (
       <Todo
-        toDoLocalStorageObserver={this.toDoLocalStorageObserver}
-        themeModeLocalStorageObserver={this.themeModeLocalStorageObserver}
+        toDoObserver={this.toDoObserver}
+        themeModeObserver={this.themeModeObserver}
       />
     );
   }

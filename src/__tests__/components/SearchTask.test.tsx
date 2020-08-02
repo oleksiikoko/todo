@@ -4,12 +4,13 @@ import SearchTask from "../../components/SearchTask";
 
 describe("SearchTask", () => {
   const mockFn = jest.fn();
+
+  const placeholderText = "Enter task name for search...";
   const props = {
+    placeholderValue: placeholderText,
     onSearchTasks: mockFn,
     themeMode: "light-mode",
   };
-
-  const placeholderText = "Enter task name for search...";
 
   describe("render", () => {
     beforeEach(() => {

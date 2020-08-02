@@ -6,15 +6,15 @@ import { ThemeModeLocalStorageObserver } from "utils";
 import "styles/ThemeChanger.scss";
 
 interface ThemeChangerIterface {
-  themeModeLocalStorageObserver: ThemeModeLocalStorageObserver;
+  themeModeObserver: ThemeModeLocalStorageObserver;
 }
 
 const ThemeChanger: React.FC<ThemeChangerIterface> = ({
-  themeModeLocalStorageObserver,
+  themeModeObserver,
 }) => {
-  const themeMode = themeModeLocalStorageObserver.mode;
-  const setLightMode = () => themeModeLocalStorageObserver.setLightMode();
-  const setDarkMode = () => themeModeLocalStorageObserver.setDarkMode();
+  const themeMode = themeModeObserver.mode;
+  const setLightMode = () => themeModeObserver.setLightMode();
+  const setDarkMode = () => themeModeObserver.setDarkMode();
 
   return (
     <div data-testid="theme-changer" className="theme-changer">

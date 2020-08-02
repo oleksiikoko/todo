@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { ThemeChanger, SearchTask, TaskList } from "components";
 import { AddTaskContainer } from "containers";
@@ -12,26 +12,22 @@ import TaskInterface from "interfaces/Task";
 import "../styles/Todo.scss";
 
 interface ToDoIterface {
-  toDoLocalStorageObserver: ToDoLocalStorageObserver;
-  themeModeLocalStorageObserver: ThemeModeLocalStorageObserver;
+  toDoObserver: ToDoLocalStorageObserver;
+  themeModeObserver: ThemeModeLocalStorageObserver;
 }
 
 const Todo: React.FC<ToDoIterface> = ({
-  toDoLocalStorageObserver,
-  themeModeLocalStorageObserver,
+  toDoObserver: toDoObserver,
+  themeModeObserver: themeModeObserver,
 }) => {
-  const [todo, setTodo] = useState<Array<TaskInterface>>(
-    toDoLocalStorageObserver.list
-  );
-  const [themeMode, setThemeMode] = useState<string>(
-    themeModeLocalStorageObserver.mode
-  );
+  const [todo, setTodo] = useState<Array<TaskInterface>>(toDoObserver.list);
+  const [themeMode, setThemeMode] = useState<string>(themeModeObserver.mode);
 
-  toDoLocalStorageObserver.subscribe(setTodo);
-  themeModeLocalStorageObserver.subscribe(setThemeMode);
+  toDoObserver.subscribe(setTodo);
+  themeModeObserver.subscribe(setThemeMode);
 
   const addTask = (name: string) => {
-    toDoLocalStorageObserver.addTask({
+    toDoObserver.addTask({
       id: createUuid(),
       name: name,
       done: false,
@@ -39,24 +35,26 @@ const Todo: React.FC<ToDoIterface> = ({
   };
 
   const changeDoneTask = (id: string) => {
-    toDoLocalStorageObserver.changeDone(id);
+    toDoObserver.changeDone(id);
   };
 
   const deleteTask = (id: string) => {
-    toDoLocalStorageObserver.deleteTask(id);
+    toDoObserver.deleteTask(id);
   };
 
   const searchTasks = (subStr: string) => {
-    toDoLocalStorageObserver.searchTasks(subStr);
+    toDoObserver.searchTasks(subStr);
   };
 
   return (
-    <div className={`todo ${themeMode}`}>
-      <div className="todo__container">
-        <ThemeChanger
-          themeModeLocalStorageObserver={themeModeLocalStorageObserver}
+    <div data-testid="todo" className={`todo ${themeMode}`}>
+      <div data-testid="todo__container" className="todo__container">
+        <ThemeChanger themeModeObserver={themeModeObserver} />
+        <SearchTask
+          placeholderValue="Enter task name for search..."
+          onSearchTasks={searchTasks}
+          themeMode={themeMode}
         />
-        <SearchTask onSearchTasks={searchTasks} themeMode={themeMode} />
         <TaskList
           list={todo}
           onClickTask={changeDoneTask}

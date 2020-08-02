@@ -9,7 +9,7 @@ describe("ThemeChanger", () => {
 
   describe("render", () => {
     beforeEach(() => {
-      render(<ThemeChanger themeModeLocalStorageObserver={themeMode} />);
+      render(<ThemeChanger themeModeObserver={themeMode} />);
     });
 
     it("wrapper", () => {
@@ -36,7 +36,7 @@ describe("ThemeChanger", () => {
   describe("change theme", () => {
     beforeEach(() => {
       themeMode.setDarkMode();
-      render(<ThemeChanger themeModeLocalStorageObserver={themeMode} />);
+      render(<ThemeChanger themeModeObserver={themeMode} />);
     });
 
     it("buttons", () => {

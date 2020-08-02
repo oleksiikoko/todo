@@ -3,15 +3,16 @@ import React from "react";
 import "styles/SearchTask.scss";
 
 interface SearchTaskIterface {
+  placeholderValue: string;
   onSearchTasks: (str: string) => void;
   themeMode: string;
 }
 
 const SearchTask: React.FC<SearchTaskIterface> = ({
+  placeholderValue,
   onSearchTasks,
   themeMode,
 }) => {
-  const placeholderValue = "Enter task name for search...";
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     onSearchTasks(event.target.value);
 
