@@ -3,7 +3,7 @@ import React from "react";
 import "styles/SearchTask.scss";
 
 interface SearchTaskIterface {
-  onSearchTasks: Function;
+  onSearchTasks: (str: string) => void;
   themeMode: string;
 }
 
