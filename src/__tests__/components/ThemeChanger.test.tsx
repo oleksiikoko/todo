@@ -1,10 +1,8 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import { act } from "react-dom/test-utils";
+import { render, screen } from "@testing-library/react";
 
 import ThemeChanger from "../../components/ThemeChanger";
 import ThemeModeLocalStorageObserver from "../../utils/ThemeModeLocalStorageObserver";
-import { themeMode } from "utils/ThemeModeLocalStorageController";
 
 describe("ThemeChanger", () => {
   const themeMode = new ThemeModeLocalStorageObserver();
@@ -13,6 +11,7 @@ describe("ThemeChanger", () => {
     beforeEach(() => {
       render(<ThemeChanger themeModeLocalStorageObserver={themeMode} />);
     });
+
     it("wrapper", () => {
       expect(themeMode.mode).toEqual("light-mode");
       expect(screen.queryByTestId("theme-changer")).toBeTruthy();
@@ -39,6 +38,7 @@ describe("ThemeChanger", () => {
       themeMode.setDarkMode();
       render(<ThemeChanger themeModeLocalStorageObserver={themeMode} />);
     });
+
     it("buttons", () => {
       expect(themeMode.mode).toEqual("dark-mode");
       expect(screen.queryAllByRole("button")[0]).toHaveClass(themeMode.mode);
