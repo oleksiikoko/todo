@@ -4,8 +4,8 @@ import { AddTaskComponent } from "components";
 
 import "styles/AddTask.scss";
 
-const inputPlaceholder = 'Enter task and press "Add task" button';
-const buttonName = "Add Task!";
+export const inputPlaceholder = 'Enter task and press "Add task" button';
+export const buttonName = "Add Task!";
 
 interface TaskItemInterface {
   onAddTask: (name: string) => void;
