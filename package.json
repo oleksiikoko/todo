@@ -15,7 +15,7 @@
   },
   "scripts": {
     "bundle": "webpack",
-    "test": "jest --watch",
+    "test": "env NODE_ENV=test jest --watch",
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
     "predeploy": "npm run build",

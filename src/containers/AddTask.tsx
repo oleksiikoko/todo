@@ -19,7 +19,8 @@ const AddTask: React.FC<TaskItemInterface> = ({ onAddTask, themeMode }) => {
     if (inputValue.trim() !== "") {
       onAddTask(inputValue);
       setInputValue("");
-      document.getElementById("todo-list")!.scrollTo(0, 0);
+      process.env.NODE_ENV !== "test" &&
+        document.getElementById("todo-list")!.scrollTo(0, 0);
     }
   };
 

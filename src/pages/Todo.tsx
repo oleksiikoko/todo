@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import { ThemeChanger, SearchTask, TaskList } from "components";
 import { AddTaskContainer } from "containers";

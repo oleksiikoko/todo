@@ -31,12 +31,37 @@ describe("Todo page", () => {
     expect(screen.queryByTestId("add-task")).toBeTruthy();
   });
 
-  //   describe("change theme", () => {
-  it("change theme", () => {
-    act(() => {
-      fireEvent.click(screen.queryByText("Dark")!);
+  describe("actions", () => {
+    it("change theme", () => {
+      act(() => {
+        fireEvent.click(screen.queryByText("Dark")!);
+      });
+      expect(screen.queryByTestId("todo")).toHaveClass("todo dark-mode");
     });
-    expect(screen.queryByTestId("todo")).toHaveClass("todo dark-mode");
   });
+
+  it("add task", () => {
+    act(() => {
+      fireEvent.change(
+        screen.queryByPlaceholderText(
+          'Enter task and press "Add task" button'
+        )!,
+        { target: { value: "task1" } }
+      );
+    });
+    act(() => {
+      fireEvent.click(screen.queryByTestId("add-task__button")!);
+    });
+
+    expect(props.toDoObserver.list).toHaveLength(1);
+    expect(screen.queryAllByTestId("task-item")).toHaveLength(1);
+  });
+
+  //   it("search task", () => {
+  //       act(() => {
+  //         fireEvent.change(screen.queryByPlaceholderText("Enter task name for search...")!);
+  //       });
+  //       expect(screen.queryByTestId("todo")).toHaveClass("todo dark-mode");
+  //     });
   //   });
 });

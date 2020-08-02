@@ -1,10 +1,11 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { act } from "react-dom/test-utils";
+
 import AddTask, {
   inputPlaceholder,
   buttonName,
 } from "../../containers/AddTask";
-import { act } from "react-dom/test-utils";
 
 describe("AddTask container", () => {
   const mockFn = jest.fn();
