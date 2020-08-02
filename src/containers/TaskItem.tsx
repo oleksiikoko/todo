@@ -24,8 +24,7 @@ const TaskItem: React.FC<TaskItemInterface> = ({
   const onClickItem = () => {
     onClick(id);
   };
-  const onClickDeleteButton = (event: React.MouseEvent) => {
-    event.stopPropagation();
+  const onClickDeleteButton = () => {
     setShowPopup(true);
   };
 
