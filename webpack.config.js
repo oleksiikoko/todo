@@ -22,9 +22,16 @@ module.exports = {
       utils: path.resolve(__dirname, "src/utils/"),
     },
     extensions: [".ts", ".tsx", ".js"],
+    modules: ["components", "com", "shared", "/shared/vendor/modules"],
   },
 
   module: {
+    loaders: [
+      { exclude: ["node_modules"], loader: "babel", test: /\.tsx?$/ },
+      // { loader: "style-loader!css-loader", test: /\.css$/ },
+      // { loader: "url-loader", test: /\.gif$/ },
+      // { loader: "file-loader", test: /\.(ttf|eot|svg)$/ },
+    ],
     rules: [
       // we use babel-loader to load our jsx and tsx files
       {

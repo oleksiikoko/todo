@@ -11,6 +11,8 @@ module.exports = {
     "\\.(css|scss)$": "identity-obj-proxy",
   },
 
+  moduleDirectories: ["node_modules", "src"],
+
   // Jest transformations -- this adds support for TypeScript
   // using ts-jest
   transform: {

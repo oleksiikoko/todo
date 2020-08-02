@@ -21,12 +21,8 @@ const TaskItem: React.FC<TaskItemInterface> = ({
 }) => {
   const [showPopup, setShowPopup] = useState<boolean>(false);
 
-  const onClickItem = () => {
-    onClick(id);
-  };
-  const onClickDeleteButton = () => {
-    setShowPopup(true);
-  };
+  const onClickItem = () => onClick(id);
+  const onClickDeleteButton = () => setShowPopup(true);
 
   return (
     <>

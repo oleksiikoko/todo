@@ -7,7 +7,11 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"
-    }
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ]
   },
   "scripts": {
     "bundle": "webpack",
