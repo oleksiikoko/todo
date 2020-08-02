@@ -17,7 +17,7 @@ const ThemeChanger: React.FC<ThemeChangerIterface> = ({
   const setDarkMode = () => themeModeLocalStorageObserver.setDarkMode();
 
   return (
-    <div className={`theme-changer ${themeMode}`}>
+    <div data-testid="theme-changer" className="theme-changer">
       <button
         className={classNames(themeMode, {
           "light-mode-active": themeMode !== "dark-mode",
